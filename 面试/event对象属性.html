@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>li<a href="">a</a></li>
+        <li>li<a href="">a</a></li>
+        <li>li<a href="">a</a></li>
+    </ul>
+    <script>
+        // 当我点击哪个元素时，event.target返回的是点击的元素节点，我们可以用返回的借点使用一些DOM对象上的一些操作，这里的event.preventDefault()，是用来阻止点击a默认跳转，刷新页面导致结果不能输出来的作用。
+        var ul = document.getElementById("ul");
+        ul.onclick = function (event) {
+            var tar = event.target
+            var tagName = tar.nodeName.toLowerCase();
+            console.log('你点击了：' + tagName);
+            event.preventDefault()
+        }
+
+        // event.currentTarget作用：与this作用相似，始终返回绑定事件的元素
+        var oul = document.getElementById("ul");
+        oul.onclick = function (event) {
+            var tarS = event.target;
+            var current = event.currentTarget;
+            var tagNameS = tarS.nodeName.toLowerCase()
+            console.log(tarS == this)
+            event.preventDefault()
+        }
+    </script>
+</body>
+
+</html>

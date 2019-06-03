@@ -1,0 +1,49 @@
+<!-- 方法1：onclick
+ 这样的方法兼容主流的浏览器，但是存在一个问题，当同一个elm绑定多个事件时，只有最后一个事件会被添加
+    elm.onclick = function() {}
+    elm.onclick = handler1;
+    elm.onclick = handler2;
+    elm.onclick = handler3;  // 只有handler3被添加执行
+
+ 方法2  
+ IE attachEvent
+    elm.attachEvent("onclick", handler1);
+    elm.attachEvent("onclick", handler2);
+    elm.attachEvent("onclick", handler3);
+ 三个方法的执行顺序是：3 2 1
+
+ 标准 addEventListener()
+    elm.addEventListener('click', handler1, false);
+    elm.addEventListener('click', handler2, false);
+    elm.addEventListener('click', handler3, false);
+ false 表示冒泡阶段捕获 -->
+
+<!-- DOM方法addEventListener()和removeEventListener()是用来分配和删除事件的函数，这两个方法有三个参数，
+分别是事件名称（String）、要触发的事件处理函数Function，指定事件处理函数的时期或阶段 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="id1">
+        <div id="id2">div</div>
+    </div>
+    <script>
+        document.getElementById('id1').addEventListener('click', function () { console.log('id1') }, false);
+        document.getElementById('id2').addEventListener('click', function () { console.log('id2') }, false);
+        // 执行顺序 div2--div1
+
+        document.getElementById('id1').addEventListener('click', function () { console.log('id1') }, true);
+        document.getElementById('id2').addEventListener('click', function () { console.log('id2') }, false)
+        // 执行顺序 div1--div2
+    </script>
+</body>
+
+</html>

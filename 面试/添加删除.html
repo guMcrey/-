@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text" />
+    <input type="button" value="添加" id="button">
+    <ul>
+        <li>第1个<button class="btn" id="1">删除</button></li>
+        <li>第2个<button class="btn" id="2">删除</button></li>
+        <li>第3个<button class="btn" id="3">删除</button></li>
+    </ul>
+    <script>
+        var button = document.getElementById('button');
+        var text = document.getElementById("text");
+
+        // getElementsByTagName()方法可返回带有指定标签名的对象的集合
+        var ul = document.getElementsByTagName("ul")[0];
+
+        // getElementsByClassName()方法返回文档中所有指定雷鸣的元素集合。
+        var btnClass = document.getElementsByClassName("btn");
+
+        button.onclick = function () {
+            var deleteButton = document.createElement("button");
+            var value = text.value;
+            console.log('value', value)
+            deleteButton.setAttribute("class", "btn");
+            var deleteText = document.createTextNode("删除");
+            deleteButton.appendChild(deleteText);
+            var li = document.createElement('li');
+            var liText = document.createTextNode(value);
+            li.appendChild(liText);
+            li.appendChild(deleteButton);
+            ul.appendChild(li);
+        }
+
+        // 给ul添加了点击事件，点击ul里面的子元素，event.target都会返回当前点击的元素节点，做一个判断，如果点击了button标签，删除这个li节点。
+        ul.onclick = function (event) {
+            var tar = event.target;
+            if (tar.nodeName.toLowerCase() == 'button') {
+                tar.parentNode.parentNode.removeChild(tar.parentNode)
+            }
+        }
+    </script>
+</body>
+
+</html>

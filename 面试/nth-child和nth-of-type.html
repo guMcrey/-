@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo1 li:nth-child(2) {
+            color: yellow;
+        }
+
+        .demo1 li:nth-of-type(2) {
+            color: violet;
+        }
+
+        .demo2 :nth-child(2) {
+            color: teal;
+        }
+
+        .demo2 :nth-of-type(2) {
+            color: thistle;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="demo1">
+            <p>zero</p>
+            <li>one</li>
+            <li>two</li>
+        </ul>
+        <ul class="demo2">
+            <p>first p</p>
+            <li>first li</li>
+            <li>second li</li>
+            <p>second p</p>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<!-- 小结: -->
+<!-- 
+    1. 如上可见，在不指定标签类型时，:nth-child(2)选中的依旧是第二个元素，无论它是什么标签，
+       而:nth-of-type(2)选中两个元素，分别是父级.demo2中的第二个p标签和第二个li标签，由此可见，
+       不指定标签类型时，:nth-of-type(2)会选中所有类型标签中的第二个。
+    2. nth-child(n)和nth-of-type(n)中的n可以是数字，关键字（odd,even）或公式（an+b,n是计数器从0开始，b是偏移值）,第一个子元素的下标是1。
+ -->
