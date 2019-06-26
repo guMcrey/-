@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div {
+            position: relative;
+            width: 50px;
+            height: 86.6px;
+            margin: 50px auto;
+            background: blueviolet;
+        }
+
+        .div:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 50px;
+            border-width: 43.3px 25px;
+            border-style: solid;
+            border-color: transparent blueviolet transparent transparent;
+        }
+
+        .div:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 50px;
+            border-width: 43.3px 25px;
+            border-style: solid;
+            border-color: transparent transparent transparent blueviolet;
+            top: 0;
+        }
+
+        /* ------------分割线-------------- */
+        .div2 {
+            width: 86.6px;
+            height: 86.6px;
+            overflow: hidden;
+        }
+
+        .one {
+            width: 50px;
+            height: 86.6px;
+            margin: 0 auto;
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+
+        .two {
+            position: absolute;
+            width: 50px;
+            height: 86.6px;
+            left: 25px;
+            top: 0;
+            transform: translate(-50%, -50%);
+            transform: rotate(60deg);
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+
+        .three {
+            position: absolute;
+            width: 50px;
+            height: 86.6px;
+            left: 25px;
+            top: 0;
+            transform: translate(-50%, -50%);
+            transform: rotate(300deg);
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 方法1：将正六边形分成三部分，左中右分别是：before部分（等腰钝角三角形），div部分（长方形），after部分（等腰钝角三角形） -->
+    <div class="div"></div>
+    <!-- 方法2：将正六边形分成三个宽高相同的div，然后使用定位和css3 transform:rotate分别向左右旋转60deg形成正六边形。 -->
+    <div class="div2">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+</body>
+
+</html>
