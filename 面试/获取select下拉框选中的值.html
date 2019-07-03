@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="text" name="" onchange="choose()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <!-- 原理：
+    1. 拿到select对象：var selectObj = document.getElementById('text');
+    2. 拿到选中项的索引：var index = selectObj.selectedIndex; 
+    3. 拿到选中项options的value值：selectObj.options[index].value;
+    4. 拿到选中项的options的text:selectObj.options[index].text-->
+    <script>
+        function choose() {
+            var objS = document.getElementById('text');
+            // selectedIndex代表你所选中项的index
+            var chooseNumber = objS.options
+            [objS.selectedIndex].text;
+            alert(chooseNumber);
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- 参考链接：https://blog.csdn.net/u010261944/article/details/78577614 -->
