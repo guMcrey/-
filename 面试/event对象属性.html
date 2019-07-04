@@ -16,6 +16,7 @@
     </ul>
     <script>
         // 当我点击哪个元素时，event.target返回的是点击的元素节点，我们可以用返回的借点使用一些DOM对象上的一些操作，这里的event.preventDefault()，是用来阻止点击a默认跳转，刷新页面导致结果不能输出来的作用。
+        // event.stopPropagation用来阻止事件冒泡
         var ul = document.getElementById("ul");
         ul.onclick = function (event) {
             var tar = event.target
